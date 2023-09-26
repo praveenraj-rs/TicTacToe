@@ -11,33 +11,36 @@ const winCombination = [
   [2, 4, 6],
 ];
 
+startGame();
+
 function startGame() {
-  let nextTurn = true;
   boardCell.forEach((cell) => {
+    // Helps clearing the TicTacToe boxes(1-3 lines for restart)
+    cell.classList.remove("x");
+    cell.classList.remove("circle");
+    document.querySelector(".result h2").innerText = "Result";
+
+    // Marking, Checking Wins, Checking Draw, Switch Marking
     cell.addEventListener("click", handleClick, { once: true });
   });
 }
-
-startGame();
 
 function handleClick(cell) {
   const inCell = cell.target;
   let currentClass = nextTurn ? "x" : "circle";
   placeMark(inCell, currentClass);
-  if (checkWin(currentClass)) {
-    document.querySelector(".result h2").innerText = currentClass + " has won";
-    return;
-  }
 
-  swapMark();
+  if (checkWin(currentClass)) {
+    endGame(false);
+  } else if (isDraw()) {
+    endGame(true);
+  } else {
+    swapMark();
+  }
 }
 
 function placeMark(inCell, currentClass) {
   inCell.classList.add(currentClass);
-}
-
-function swapMark() {
-  nextTurn = !nextTurn;
 }
 
 function checkWin(currentClass) {
@@ -46,4 +49,24 @@ function checkWin(currentClass) {
       return boardCell[index].classList.contains(currentClass);
     });
   });
+}
+
+function isDraw() {
+  return [...boardCell].every((cell) => {
+    return cell.classList.contains("x") || cell.classList.contains("circle");
+  });
+}
+
+function swapMark() {
+  nextTurn = !nextTurn;
+}
+
+function endGame(draw) {
+  if (draw) {
+    document.querySelector(".result h2").innerText = "Draw";
+  } else {
+    document.querySelector(".result h2").innerText = `${
+      nextTurn ? "X's" : "O's"
+    } Wins`;
+  }
 }
