@@ -20,6 +20,7 @@ function startGame() {
     cell.classList.remove("x");
     cell.classList.remove("circle");
     document.querySelector(".result h2").innerText = "Result";
+    nextTurn=true
     stop=false
 
     // Marking, Checking Wins, Checking Draw, Switch Marking
