@@ -111,11 +111,13 @@ h1{
 .result{
     border: 2px solid white;
     border-radius: 10px;
+    background-color: #242426;
 
     width: var(--boardSize);
     height: calc(var(--boardSize)*0.15);
     margin: 1rem;
     margin-top: 2rem;
+
 
 }
 
