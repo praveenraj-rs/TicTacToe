@@ -1,5 +1,6 @@
 const boardCell = document.querySelectorAll(".cell");
 let nextTurn = true;
+let stop = false;
 const winCombination = [
   [0, 1, 2],
   [3, 4, 5],
@@ -19,6 +20,7 @@ function startGame() {
     cell.classList.remove("x");
     cell.classList.remove("circle");
     document.querySelector(".result h2").innerText = "Result";
+    stop=false
 
     // Marking, Checking Wins, Checking Draw, Switch Marking
     cell.addEventListener("click", handleClick, { once: true });
@@ -28,10 +30,12 @@ function startGame() {
 function handleClick(cell) {
   const inCell = cell.target;
   let currentClass = nextTurn ? "x" : "circle";
-  placeMark(inCell, currentClass);
+  if(!stop){
+  placeMark(inCell, currentClass);}
 
   if (checkWin(currentClass)) {
     endGame(false);
+    stop=true  
   } else if (isDraw()) {
     endGame(true);
   } else {
