@@ -5,9 +5,16 @@
 }
 :root{
     --h1FontColor:#ffffff;
-    --bgColor:#000000;
     --boardSize:20em;
     --cellSize: calc(var(--boardSize)/3);
+
+    --bgColor: hsl(0, 0%, 7%);
+    --navBgColor: hsl(240, 2%, 12%);
+    --boderColor: #6bf8ff;
+    --textColor: #d6d6d6;
+    --headColor: white;
+    --headClick: #7fffd4;
+    --headOver: grey;
 
 }
 
@@ -27,7 +34,8 @@ body{
 .box{
     border: 2px solid white;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px #6bf8ff;
+    border: 2px solid var(--boderColor);
+    background-color: var(--navBgColor);
 }
 
 h1{
@@ -51,7 +59,7 @@ h1{
     width: var(--cellSize);
     height: var(--cellSize);
 
-    border: 2px solid white;
+    border: 2px solid var(--textColor);
     
     display: flex;
     justify-content: center;
@@ -96,7 +104,7 @@ h1{
     width: calc(var(--cellSize)*0.4);
     height: calc(var(--cellSize)*0.4);
     border-radius: 50%;
-    background-color: black;
+    background-color: var(--navBgColor);
     position:absolute;
 }
 
@@ -109,9 +117,9 @@ h1{
 }
 
 .result{
-    border: 2px solid white;
+    border: 2px solid gray;
     border-radius: 10px;
-    background-color: #242426;
+    background-color: var(--navBgColor);
 
     width: var(--boardSize);
     height: calc(var(--boardSize)*0.15);
@@ -143,11 +151,11 @@ button{
     align-items: center;
     position: fixed;
     width: 100%;
-    color: white;
+    color: gray;
     bottom: 0;
-    background-color: black;
     font-size: 1rem;
     text-align: center;
-    padding: 10px
+    padding: 10px;
+    margin-bottom: 10px;
   }
   
